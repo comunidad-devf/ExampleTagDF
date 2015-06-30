@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Tag df</string>
+    <string name="menu_diary">Agenda</string>
+    <string name="menu_guests">Invitados</string>
+    <string name="menu_map">Mapa</string>
+    <string name="menu_about">Acerca de</string>
 
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
