@@ -5,8 +5,15 @@
     android:orientation="vertical"
     tools:context="f.dev.exampletagdf.fragments.MapEventFragment">
 
-    <include
-        layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
+
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>
 
