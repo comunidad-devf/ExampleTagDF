@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutContainerItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_selector"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_recycler_view">
+
+    <ImageView
+        android:contentDescription="@string/app_name"
+        android:id="@+id/imageViewTitleSession"
+        android:layout_width="124dp"
+        android:layout_height="96dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/session_one" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/padding_recycler_view"
+        android:layout_marginStart="@dimen/padding_recycler_view"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textViewTitleSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:minLines="1"
+            android:text="WAKE UP TAG CON LOS AMIGOS INVISIBLES"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/title_session"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewDescriptionSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:maxLines="4"
+            android:minLines="1"
+            android:text="07:00 am -  10:00 am\nEste martes 30 de junio llega la tercera edición de TagCDMX con un evento inaugural que rompe los esquemas típicos de la celebración y tú puedes ser parte de este acontecimiento."
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/secondary_text" />
+    </LinearLayout>
+</LinearLayout>

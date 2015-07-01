@@ -1,25 +1,42 @@
 package f.dev.exampletagdf.fragments;
 
-import android.app.Fragment;
+
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import f.dev.exampletagdf.R;
+import f.dev.exampletagdf.adapters.SessionsAdapter;
+import f.dev.exampletagdf.interfaces.OnItemClickListener;
+import f.dev.exampletagdf.utils.FragementPagerModel;
 
 public class DayFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
+    private int numberDate;
 
-    public static DayFragment newInstance(String param1, String param2) {
+    @Bind(R.id.recyclerViewSessions)
+    RecyclerView recyclerViewSessions;
+
+    FloatingActionButton floatingActionButton;
+
+
+    public static DayFragment newInstance(int numberDate) {
         DayFragment fragment = new DayFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, numberDate);
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,16 +48,60 @@ public class DayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            numberDate = getArguments().getInt(ARG_PARAM1);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_day, container, false);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initRecyclerView();
+
+    }
+
+    private void initRecyclerView() {
+
+        recyclerViewSessions.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        SessionsAdapter sessionsAdapter = new SessionsAdapter(getActivity());
+        recyclerViewSessions.setAdapter(sessionsAdapter);
+
+        sessionsAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                showSnackbar(itemView);
+            }
+        });
+
+    }
+
+    private void showSnackbar(View itemView) {
+        Snackbar.make(itemView, R.string.message_selected_session, Snackbar.LENGTH_LONG)
+                .setAction(R.string.ok, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }).show();
+    }
+
+    public static List<FragementPagerModel> createPagerDates(Context context) {
+
+        List<FragementPagerModel> fragementPagerModels = new ArrayList<>();
+
+        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(1), context.getString(R.string.tab_date_one)));
+        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(2), context.getString(R.string.tab_date_two)));
+        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(3), context.getString(R.string.tab_date_three)));
+
+        return fragementPagerModels;
+    }
 }

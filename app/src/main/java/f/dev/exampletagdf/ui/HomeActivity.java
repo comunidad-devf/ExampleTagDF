@@ -18,14 +18,12 @@ import f.dev.exampletagdf.fragments.AboutFragment;
 import f.dev.exampletagdf.fragments.DiaryFragment;
 import f.dev.exampletagdf.fragments.GuetsFragment;
 import f.dev.exampletagdf.fragments.MapEventFragment;
+import f.dev.exampletagdf.interfaces.ReplaceToolbar;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ReplaceToolbar {
 
     @Bind(R.id.drawer_layout)
     DrawerLayout drawerLayout;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
 
     @Bind(R.id.navigation_view)
     NavigationView navigationView;
@@ -38,23 +36,11 @@ public class HomeActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        initActionBar();
-
         setupDrawerContent();
 
         replaceFragment(new DiaryFragment());
 
     }
-
-    private void initActionBar() {
-
-        setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-    }
-
 
     private void setupDrawerContent() {
 
@@ -94,6 +80,15 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onReplaceToolbar(Toolbar toolbar) {
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -102,5 +97,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }
