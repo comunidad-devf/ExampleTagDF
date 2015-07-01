@@ -11,6 +11,8 @@
     <string name="tab_date_three">02/Jul</string>
     <string name="ok">Aceptar</string>
     <string name="message_selected_session">Sesión Seleccionada</string>
+    <string name="dev_f">Dev.F</string>
+    <string name="email_dev_f">hola@devf.mx</string>
 
 
 </resources>

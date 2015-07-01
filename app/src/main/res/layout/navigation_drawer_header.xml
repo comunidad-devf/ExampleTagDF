@@ -6,8 +6,48 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="168dp"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/logo_tag_df_2" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_tag_df_4" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="41dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_dev_f_2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="@string/dev_f"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="@string/email_dev_f"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
 
 </FrameLayout>
