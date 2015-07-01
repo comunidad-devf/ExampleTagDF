@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import f.dev.exampletagdf.R;
 import f.dev.exampletagdf.adapters.SessionsAdapter;
 import f.dev.exampletagdf.interfaces.OnItemClickListener;
-import f.dev.exampletagdf.utils.FragementPagerModel;
+import f.dev.exampletagdf.utils.FragmentPagerModel;
 
 public class DayFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
@@ -71,8 +71,9 @@ public class DayFragment extends Fragment {
 
     private void initRecyclerView() {
 
-        recyclerViewSessions.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         SessionsAdapter sessionsAdapter = new SessionsAdapter(getActivity());
+
+        recyclerViewSessions.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerViewSessions.setAdapter(sessionsAdapter);
 
         sessionsAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -94,14 +95,14 @@ public class DayFragment extends Fragment {
                 }).show();
     }
 
-    public static List<FragementPagerModel> createPagerDates(Context context) {
+    public static List<FragmentPagerModel> createPagerDates(Context context) {
 
-        List<FragementPagerModel> fragementPagerModels = new ArrayList<>();
+        List<FragmentPagerModel> fragmentPagerModels = new ArrayList<>();
 
-        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(1), context.getString(R.string.tab_date_one)));
-        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(2), context.getString(R.string.tab_date_two)));
-        fragementPagerModels.add(new FragementPagerModel(DayFragment.newInstance(3), context.getString(R.string.tab_date_three)));
+        fragmentPagerModels.add(new FragmentPagerModel(DayFragment.newInstance(1), context.getString(R.string.tab_date_one)));
+        fragmentPagerModels.add(new FragmentPagerModel(DayFragment.newInstance(2), context.getString(R.string.tab_date_two)));
+        fragmentPagerModels.add(new FragmentPagerModel(DayFragment.newInstance(3), context.getString(R.string.tab_date_three)));
 
-        return fragementPagerModels;
+        return fragmentPagerModels;
     }
 }

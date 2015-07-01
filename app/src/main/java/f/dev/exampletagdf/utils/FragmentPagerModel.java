@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 /**
  * Created by sati on 30/06/2015.
  */
-public class FragementPagerModel {
+public class FragmentPagerModel {
 
     private Fragment fragment;
     private CharSequence title;
 
-    public FragementPagerModel(Fragment fragment, CharSequence title) {
+    public FragmentPagerModel(Fragment fragment, CharSequence title) {
         this.fragment = fragment;
         this.title = title;
     }

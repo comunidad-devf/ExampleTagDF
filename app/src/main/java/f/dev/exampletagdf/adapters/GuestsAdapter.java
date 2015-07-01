@@ -6,24 +6,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import f.dev.exampletagdf.R;
 import f.dev.exampletagdf.interfaces.OnItemClickListener;
+import f.dev.exampletagdf.utils.GuestModel;
 
 /**
  * Created by sati on 30/06/2015.
  */
-public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.SessionViewHolder> {
+public class GuestsAdapter extends RecyclerView.Adapter<GuestsAdapter.GuestViewHolder> {
 
+    private List<GuestModel> guestModels;
     private LayoutInflater layoutInflater;
     private OnItemClickListener onItemClickListener;
 
-    public SessionsAdapter(Context context) {
+    public GuestsAdapter(Context context, List<GuestModel> guestModels) {
         layoutInflater = LayoutInflater.from(context);
+        this.guestModels = guestModels;
 
     }
 
@@ -32,39 +37,36 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
     }
 
     @Override
-    public SessionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GuestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = layoutInflater.inflate(R.layout.item_session, parent, false);
+        View itemVIew = layoutInflater.inflate(R.layout.item_guest, parent, false);
 
-
-        return new SessionViewHolder(itemView);
+        return new GuestViewHolder(itemVIew);
     }
 
-
     @Override
-    public void onBindViewHolder(SessionViewHolder holder, int position) {
+    public void onBindViewHolder(GuestViewHolder holder, int position) {
         holder.setViewPosition(position);
+        holder.setGuest(guestModels.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return guestModels.size();
     }
 
-    public class SessionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class GuestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.imageViewTitleSession)
-        ImageView imageViewTitleSession;
+        @Bind(R.id.imageViewGuest)
+        CircleImageView imageViewGuest;
 
-        @Bind(R.id.textViewTitleSession)
-        TextView textViewTitleSession;
+        @Bind(R.id.textViewNamgGuest)
+        TextView textViewNamgGuest;
 
-        @Bind(R.id.textViewDescriptionSession)
-        TextView textViewDescriptionSession;
 
         private View itemView;
 
-        public SessionViewHolder(View itemView) {
+        public GuestViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
             this.itemView.setOnClickListener(this);
@@ -76,11 +78,14 @@ public class SessionsAdapter extends RecyclerView.Adapter<SessionsAdapter.Sessio
             onItemClickListener.onItemClick(v, (int) v.getTag());
         }
 
-
         public void setViewPosition(int position) {
             itemView.setTag(position);
         }
 
 
+        public void setGuest(GuestModel guestModel) {
+            imageViewGuest.setImageResource(guestModel.getIdImage());
+            textViewNamgGuest.setText(guestModel.getIdName());
+        }
     }
 }

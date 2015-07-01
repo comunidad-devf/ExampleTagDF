@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import f.dev.exampletagdf.R;
 import f.dev.exampletagdf.adapters.DiaryFragmentPagerAdapter;
+import f.dev.exampletagdf.dialogs.SearchDialog;
 import f.dev.exampletagdf.interfaces.ReplaceToolbar;
 
 public class DiaryFragment extends Fragment {
@@ -47,7 +49,7 @@ public class DiaryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_diary, container, false);
-        ButterKnife.bind(this, rootView);
+            ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -66,6 +68,11 @@ public class DiaryFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    @OnClick(R.id.floatingActionButton)
+    public void onClick() {
+        new SearchDialog().show(getFragmentManager(),null);
+
+    }
 
     @Override
     public void onDetach() {

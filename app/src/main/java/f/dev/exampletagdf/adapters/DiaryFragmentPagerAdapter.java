@@ -6,33 +6,33 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-import f.dev.exampletagdf.utils.FragementPagerModel;
+import f.dev.exampletagdf.utils.FragmentPagerModel;
 
 /**
  * Created by sati on 30/06/2015.
  */
 public class DiaryFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private List<FragementPagerModel> fragementPagerModels;
+    private List<FragmentPagerModel> fragmentPagerModels;
 
-    public DiaryFragmentPagerAdapter(FragmentManager fm, List<FragementPagerModel> fragementPagerModels) {
+    public DiaryFragmentPagerAdapter(FragmentManager fm, List<FragmentPagerModel> fragmentPagerModels) {
         super(fm);
-        this.fragementPagerModels = fragementPagerModels;
+        this.fragmentPagerModels = fragmentPagerModels;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return fragementPagerModels.get(position).getFragment();
+        return fragmentPagerModels.get(position).getFragment();
     }
 
     @Override
     public int getCount() {
-        return fragementPagerModels.size();
+        return fragmentPagerModels.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return fragementPagerModels.get(position).getTitle();
+        return fragmentPagerModels.get(position).getTitle();
     }
 
 

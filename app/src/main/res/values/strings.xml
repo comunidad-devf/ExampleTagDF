@@ -13,6 +13,14 @@
     <string name="message_selected_session">Sesión Seleccionada</string>
     <string name="dev_f">Dev.F</string>
     <string name="email_dev_f">hola@devf.mx</string>
+    <string name="hint_search_conference">Buscar por Conferencia</string>
+    <string name="hint_search_category">Buscar por Categoria</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="name_guest_1">ELISABETH MOSS</string>
+    <string name="name_guest_2">MATTHEW WEINER</string>
+    <string name="name_guest_3">JOHN SLATTERY</string>
+    <string name="name_guest_4">SPIKE JONZE</string>
 
 
 </resources>
